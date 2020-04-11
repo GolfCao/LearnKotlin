@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29//指定项目的编译版本
+    buildToolsVersion "29.0.3"//构建工具的版本
+
+    defaultConfig {
+        applicationId "com.example.myapplication"//应用的唯一标识符
+        minSdkVersion 21//项目兼容的最低系统版本
+        targetSdkVersion 29//
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false//是否进行代码混淆
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'//混淆规则，在SDK中
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])//本地依赖说明
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
